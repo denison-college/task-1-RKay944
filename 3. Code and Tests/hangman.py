@@ -1,5 +1,6 @@
+import funcion
 easy = ['flow', 'jazz']
-medium = ['flight, altitude']
+medium = ['flight', 'altitude']
 hard = ['canibalism', 'psychidelic']
 game_screen = """
 _______
@@ -9,6 +10,7 @@ _______
 |     |
 |\   / \ 
 |_\__
+
 """
 rules = """
 1. Select a difficulty from easy(4-5), medium(6-8) or hard(8+)
@@ -22,6 +24,7 @@ difficulty = ""
 while difficulty == "":
     difficulty = input("Select difficulty: ")
     if difficulty.lower() == "easy":
+        funcion.clear_screen()
         print(game_screen)
         letter = input('Pick a letter: ')
     elif difficulty.lower() == "medium":
