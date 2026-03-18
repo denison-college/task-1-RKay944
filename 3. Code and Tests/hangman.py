@@ -1,7 +1,5 @@
-import funcion
-easy = ['flow', 'jazz']
-medium = ['flight', 'altitude']
-hard = ['canibalism', 'psychidelic']
+import random
+import utility
 game_screen = """
 _______
 |     |
@@ -23,14 +21,28 @@ print(rules)
 difficulty = ""
 while difficulty == "":
     difficulty = input("Select difficulty: ")
+    with open("3. Code and Tests/"+difficulty.lower()+".txt", "r") as f:
+        words = f.read().splitlines()
+        numder = random.randrange(0,len(words)-1)
+        word = words[numder]
     if difficulty.lower() == "easy":
-        funcion.clear_screen()
+        utility.clear_screen()
+        for letters in list(word):
+            print("_", end="")
         print(game_screen)
         letter = input('Pick a letter: ')
     elif difficulty.lower() == "medium":
+        utility.clear_screen()
+        for letters in list(word):
+            print("_", end="")
+        print(word)
         print(game_screen)
         letter = input('Pick a letter: ')
     elif difficulty.lower() == "hard":
+        utility.clear_screen()
+        for letters in list(word):
+            print("_", end="")
+        print(word)
         print(game_screen)
         letter = input('Pick a letter: ')
     else:
