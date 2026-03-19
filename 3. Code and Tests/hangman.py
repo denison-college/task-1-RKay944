@@ -25,24 +25,24 @@ while difficulty == "":
         words = f.read().splitlines()
         numder = random.randrange(0,len(words)-1)
         word = words[numder]
-    if difficulty.lower() == "easy":
+    while difficulty.lower() == "easy":
         utility.clear_screen()
-        for letters in list(word):
+        for characters in list(word):
             print("_", end="")
         print(game_screen)
         letter = input('Pick a letter: ')
+        if letter in word:
+            print(letter)
     elif difficulty.lower() == "medium":
         utility.clear_screen()
-        for letters in list(word):
+        for characters in list(word):
             print("_", end="")
-        print(word)
         print(game_screen)
         letter = input('Pick a letter: ')
     elif difficulty.lower() == "hard":
         utility.clear_screen()
-        for letters in list(word):
+        for characters in list(word):
             print("_", end="")
-        print(word)
         print(game_screen)
         letter = input('Pick a letter: ')
     else:
