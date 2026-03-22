@@ -1,5 +1,7 @@
 import random
 import utility
+
+underscore = []
 game_screen = """
 _______
 |     |
@@ -25,14 +27,20 @@ while difficulty == "":
         words = f.read().splitlines()
         numder = random.randrange(0,len(words)-1)
         word = words[numder]
-    while difficulty.lower() == "easy":
+    if difficulty.lower() == "easy":
         utility.clear_screen()
         for characters in list(word):
-            print("_", end="")
+            underscore.append("_")
+            print(underscore)
         print(game_screen)
         letter = input('Pick a letter: ')
-        if letter in word:
+        if letter not in word:
             print(letter)
+            letter = input("Pick a letter: ")
+    
+        else:
+            print("_", letter, "_")
+            letter = input("Pick a letter: ")
     elif difficulty.lower() == "medium":
         utility.clear_screen()
         for characters in list(word):

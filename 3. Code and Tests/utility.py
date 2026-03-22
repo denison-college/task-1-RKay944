@@ -6,4 +6,3 @@ def clear_screen():
 
     else:
          _ = os.system('clear')
-         
