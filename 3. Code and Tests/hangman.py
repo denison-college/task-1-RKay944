@@ -1,7 +1,6 @@
 import random
 import utility
 
-underscore = []
 game_screen = """
 _______
 |     |
@@ -18,40 +17,33 @@ rules = """
 3. wrong guesses will add to the hangman, if completed, you lose
 """
 
-print("Hangman")
-print(rules)
-difficulty = ""
-while difficulty == "":
-    difficulty = input("Select difficulty: ")
-    with open("3. Code and Tests/"+difficulty.lower()+".txt", "r") as f:
-        words = f.read().splitlines()
-        numder = random.randrange(0,len(words)-1)
-        word = words[numder]
-    if difficulty.lower() == "easy":
-        utility.clear_screen()
-        for characters in list(word):
-            underscore.append("_")
-            print(underscore)
-        print(game_screen)
-        letter = input('Pick a letter: ')
-        if letter not in word:
-            print(letter)
-            letter = input("Pick a letter: ")
-    
-        else:
-            print("_", letter, "_")
-            letter = input("Pick a letter: ")
-    elif difficulty.lower() == "medium":
-        utility.clear_screen()
-        for characters in list(word):
-            print("_", end="")
-        print(game_screen)
-        letter = input('Pick a letter: ')
-    elif difficulty.lower() == "hard":
-        utility.clear_screen()
-        for characters in list(word):
-            print("_", end="")
-        print(game_screen)
-        letter = input('Pick a letter: ')
+def play_with_word(word):
+    utility.clear_screen()
+    underscore = "_ " * len(word)
+    print(underscore)
+    print(word)
+    print(game_screen)
+    letter = input('Pick a letter: ')
+    if letter in word:
+        print(letter)
     else:
-        difficulty = ""
+        print("ah")
+
+def game():
+    print("Hangman")
+    print(rules)
+    difficulty = ""
+    while difficulty == "":
+        difficulty = input("Select difficulty: ")
+        if difficulty.lower() in ["easy", "medium, hard"]:
+            with open("3. Code and Tests/"+difficulty.lower()+".txt", "r") as f:
+                words = f.read().splitlines()
+                numder = random.randrange(0,len(words)-1)
+                word = words[numder]
+                word = word.lower()
+            play_with_word(word)
+        else:
+            difficulty = ""
+
+if __name__ == "__main__":
+    game()
