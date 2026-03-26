@@ -1,16 +1,7 @@
 import random
 import utility
+import game_screen 
 
-game_screen = """
-_______
-|     |
-|     O
-|    /|\ 
-|     |
-|\   / \ 
-|_\__
-
-"""
 rules = """
 1. Select a difficulty from easy(4-5), medium(6-8) or hard(8+)
 2. try to guess the word letter by letter
@@ -18,16 +9,23 @@ rules = """
 """
 
 def play_with_word(word):
-    utility.clear_screen()
-    underscore = "_ " * len(word)
-    print(underscore)
-    print(word)
-    print(game_screen)
-    letter = input('Pick a letter: ')
-    if letter in word:
-        print(letter)
+    points = 6
+    number = 0
+    length_word = len(word)
+    while points != number:
+        utility.clear_screen()
+        underscore = "_ " * length_word
+        print(underscore)
+        print(word)
+        print(game_screen.start_screen)
+        letter = input('Pick a letter: ')
+        if letter in word:
+            length_word = length_word-1
+        else:
+            points = points-1
     else:
-        print("ah")
+        utility.clear_screen
+        print(game_screen.end_screen)
 
 def game():
     print("Hangman")
@@ -35,7 +33,7 @@ def game():
     difficulty = ""
     while difficulty == "":
         difficulty = input("Select difficulty: ")
-        if difficulty.lower() in ["easy", "medium, hard"]:
+        if difficulty.lower() in ["easy", "medium", "hard"]:
             with open("3. Code and Tests/"+difficulty.lower()+".txt", "r") as f:
                 words = f.read().splitlines()
                 numder = random.randrange(0,len(words)-1)
