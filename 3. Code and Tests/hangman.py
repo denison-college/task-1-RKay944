@@ -11,16 +11,21 @@ rules = """
 def play_with_word(word):
     points = 6
     number = 0
-    length_word = len(word)
+    chosen = []
     while points != number:
         utility.clear_screen()
-        underscore = "_ " * length_word
+        underscore = []
+        for unit in word:
+            if unit in chosen:
+                underscore.append(unit)
+            else:
+                underscore.append("_")
         print(underscore)
         print(word)
         print(game_screen.start_screen)
         letter = input('Pick a letter: ')
         if letter in word:
-            length_word = length_word-1
+            chosen.append(letter)
         else:
             points = points-1
     else:

@@ -1,3 +1,3 @@
 import hangman
 
-hangman.play_with_word("easy")
+hangman.play_with_word("fellow")
