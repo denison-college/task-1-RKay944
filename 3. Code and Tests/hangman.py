@@ -9,9 +9,11 @@ rules = """
 """
 
 def play_with_word(word):
-    points = 6
-    number = 0
+    points = 0
+    number = 6
     chosen = []
+    wrong = []
+    underscore = []
     while points != number:
         utility.clear_screen()
         underscore = []
@@ -21,16 +23,36 @@ def play_with_word(word):
             else:
                 underscore.append("_")
         print(underscore)
-        print(word)
-        print(game_screen.start_screen)
-        letter = input('Pick a letter: ')
+        if points == 1:
+            print(game_screen.mid_screen1)
+        elif points == 2:
+            print(game_screen.mid_screen2)
+        elif points == 3:
+            print(game_screen.mid_screen3)
+        elif points == 4:
+            print(game_screen.mid_screen4)
+        elif points == 5:
+            print(game_screen.mid_screen5)
+        else:
+            print(game_screen.start_screen)
+        print("Wrong Guesses:")
+        print(wrong)
+        print("if all letters are guessed type the word")
+        letter = input('  Pick a letter: ')
         if letter in word:
             chosen.append(letter)
         else:
-            points = points-1
+            points = points+1
+            wrong.append(letter)
+        if "".join(underscore) == word:
+            utility.clear_screen()
+            print("You Win!!!")
+            print("The word was", word)
+            break
     else:
-        utility.clear_screen
+        utility.clear_screen()
         print(game_screen.end_screen)
+        print(word)
 
 def game():
     print("Hangman")
