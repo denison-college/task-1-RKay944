@@ -52,7 +52,7 @@ def play_with_word(word):
     else:
         utility.clear_screen()
         print(game_screen.end_screen)
-        print(word)
+        print("the word was", word)
 
 def game():
     print("Hangman")
